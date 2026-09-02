@@ -4,6 +4,7 @@ export const celebrations = pgTable('celebrations', {
   id: serial('id').primaryKey(), slug: text('slug').notNull(), title: text('title').notNull(),
   celebrationDate: date('celebration_date', { mode: 'string' }).notNull(), liturgicalYear: text('liturgical_year').notNull(),
   season: text('season').notNull(), rank: text('rank').notNull(), color: text('color').notNull(), summary: text('summary'),
+  calendarSource: text('calendar_source').notNull().default('general-roman'), sourceUrl: text('source_url'), regionalNote: text('regional_note'),
 }, (table) => [uniqueIndex('idx_celebrations_slug').on(table.slug), index('idx_celebrations_date_rank').on(table.celebrationDate, table.rank), index('idx_celebrations_season').on(table.season)]);
 
 export const readings = pgTable('readings', {
@@ -19,3 +20,4 @@ export const celebrationHymns = pgTable('celebration_hymns', {
   celebrationId: integer('celebration_id').notNull().references(() => celebrations.id, { onDelete: 'cascade' }),
   hymnId: integer('hymn_id').notNull().references(() => hymns.id, { onDelete: 'cascade' }), sortOrder: integer('sort_order').notNull().default(0),
 }, (table) => [uniqueIndex('idx_celebration_hymns_unique').on(table.celebrationId, table.hymnId)]);
+
