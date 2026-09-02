@@ -1,7 +1,7 @@
 import { date, index, integer, pgTable, serial, text, uniqueIndex } from 'drizzle-orm/pg-core';
 
 export const celebrations = pgTable('celebrations', {
-  id: serial('id').primaryKey(), slug: text('slug').notNull(), title: text('title').notNull(),
+  id: serial('id').primaryKey(), slug: text('slug').notNull(), eventKey: text('event_key'), title: text('title').notNull(),
   celebrationDate: date('celebration_date', { mode: 'string' }).notNull(), liturgicalYear: text('liturgical_year').notNull(),
   season: text('season').notNull(), rank: text('rank').notNull(), color: text('color').notNull(), summary: text('summary'),
   calendarSource: text('calendar_source').notNull().default('general-roman'), sourceUrl: text('source_url'), regionalNote: text('regional_note'),
