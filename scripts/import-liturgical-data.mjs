@@ -20,7 +20,7 @@ const sql = neon(connectionString);
 let imported = 0;
 
 for (const item of payload.celebrations) {
-  if (!['A', 'B', 'C'].includes(item.liturgicalYear)) throw new Error(`Invalid liturgicalYear for ${item.slug}`);
+  if (!['A', 'B', 'C', 'I', 'II'].includes(item.liturgicalYear)) throw new Error(`Invalid liturgicalYear for ${item.slug}`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(item.celebrationDate)) throw new Error(`Invalid date for ${item.slug}`);
   if (!item.slug || !item.title || !item.season || !item.rank || !item.color) throw new Error(`Missing required fields for ${item.slug ?? '(unknown)'}`);
 
