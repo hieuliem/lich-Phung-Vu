@@ -25,13 +25,13 @@ for (const item of payload.celebrations) {
   if (!item.slug || !item.title || !item.season || !item.rank || !item.color) throw new Error(`Missing required fields for ${item.slug ?? '(unknown)'}`);
 
   const [celebration] = await sql.query(
-    `INSERT INTO celebrations (slug, title, celebration_date, liturgical_year, season, rank, color, summary)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
-     ON CONFLICT (slug) DO UPDATE SET title=EXCLUDED.title, celebration_date=EXCLUDED.celebration_date,
+    `INSERT INTO celebrations (slug, event_key, title, celebration_date, liturgical_year, season, rank, color, summary)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
+     ON CONFLICT (slug) DO UPDATE SET event_key=EXCLUDED.event_key, title=EXCLUDED.title, celebration_date=EXCLUDED.celebration_date,
        liturgical_year=EXCLUDED.liturgical_year, season=EXCLUDED.season, rank=EXCLUDED.rank,
        color=EXCLUDED.color, summary=EXCLUDED.summary
      RETURNING id`,
-    [item.slug, item.title, item.celebrationDate, item.liturgicalYear, item.season, item.rank, item.color, item.summary ?? null],
+    [item.slug, item.eventKey ?? item.slug.replace(/-[0-9]{4}-[0-9]{2}-[0-9]{2}$/, ''), item.title, item.celebrationDate, item.liturgicalYear, item.season, item.rank, item.color, item.summary ?? null],
   );
 
   await sql.query('DELETE FROM readings WHERE celebration_id = $1', [celebration.id]);
