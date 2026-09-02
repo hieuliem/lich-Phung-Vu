@@ -4,6 +4,7 @@
   "celebrations": [
     {
       "slug": "example-2026",
+      "eventKey": "example",
       "title": "Tên ngày lễ",
       "celebrationDate": "2026-12-08",
       "liturgicalYear": "A",
@@ -23,3 +24,4 @@
     }
   ]
 }
+
