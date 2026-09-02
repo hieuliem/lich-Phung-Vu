@@ -1,0 +1,25 @@
+{
+  "version": "2026.09",
+  "source": "official-source-url",
+  "celebrations": [
+    {
+      "slug": "example-2026",
+      "title": "Tên ngày lễ",
+      "celebrationDate": "2026-12-08",
+      "liturgicalYear": "A",
+      "season": "Mùa Vọng",
+      "rank": "Lễ Trọng",
+      "color": "Trắng",
+      "summary": "Tóm tắt ngắn",
+      "readings": [
+        { "kind": "Bài đọc I", "citation": "Is 7,10-14", "excerpt": "" },
+        { "kind": "Đáp ca", "citation": "Tv 23", "excerpt": "" },
+        { "kind": "Bài đọc II", "citation": "Rm 1,1-7", "excerpt": "" },
+        { "kind": "Tin Mừng", "citation": "Mt 1,18-24", "excerpt": "" }
+      ],
+      "hymns": [
+        { "title": "Tên bài hát", "composer": "Nhạc sĩ", "liturgicalPart": "Ca nhập lễ", "format": "Cộng đoàn" }
+      ]
+    }
+  ]
+}
